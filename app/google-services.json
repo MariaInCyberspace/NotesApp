@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "113265963081",
+    "project_id": "notesapp-70d4f",
+    "storage_bucket": "notesapp-70d4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113265963081:android:bb0fc0ae21a756abe9cf98",
+        "android_client_info": {
+          "package_name": "maria.incyberspace.notesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113265963081-lrl3svlkp1q96aemm2veihibjp9v4bog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRsGE2591TYEbzrxyO6C17AX4VyALC-7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113265963081-lrl3svlkp1q96aemm2veihibjp9v4bog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
