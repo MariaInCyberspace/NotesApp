@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.launch
+import maria.incyberspace.notesapp.core.Constants
 import maria.incyberspace.notesapp.core.Utils
 import maria.incyberspace.notesapp.ui.theme.NotesTheme
 
@@ -38,9 +39,10 @@ fun NoteDetailsScreen(
     navigateBack: () -> Unit
 ) {
     val noteState = viewModel.noteState
-    val isNoteIdNotBlank = noteId.isNotBlank()
+//    val isNoteIdNotBlank = noteId.isNotBlank() // todo find a better solution...
+    val isNoteIdBlank = noteId == Constants.Constants.NOTE_ID
     val isFormNotBlank = noteState.title!!.isNotBlank() && noteState.content!!.isNotBlank()
-    val icon = if (isNoteIdNotBlank) {
+    val icon = if (!isNoteIdBlank) {
         Icons.Default.Refresh
     } else {
         Icons.Default.Check
@@ -48,7 +50,7 @@ fun NoteDetailsScreen(
     val context = LocalContext.current
     // todo : write icon?
     LaunchedEffect(key1 = Unit) {
-        if (!isNoteIdNotBlank) {
+        if (!isNoteIdBlank) {
             viewModel.getNote(noteId)
         } else {
             viewModel.resetState()
@@ -63,7 +65,7 @@ fun NoteDetailsScreen(
         floatingActionButton = {
             AnimatedVisibility(visible = isFormNotBlank) {
                 FloatingActionButton(onClick = {
-                    if (isNoteIdNotBlank) {
+                    if (!isNoteIdBlank) {
                         viewModel.updateNote(noteId)
                     } else {
                         viewModel.addNote()

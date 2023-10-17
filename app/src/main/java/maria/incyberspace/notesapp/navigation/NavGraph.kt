@@ -54,7 +54,16 @@ fun NavGraph(
                 },
                 onNoteClick = {
                     noteId ->
-                    navController.navigate(Screen.NewNoteScreen.route + "?id={$noteId}") {
+                    navController.navigate(
+//                        Screen.NewNoteScreen.route + "?id={$noteId}"
+//                        Screen.NewNoteScreen.route + "/${noteId}"
+
+                        if (noteId != "") {
+                            Screen.NewNoteScreen.route + "/${noteId}"
+                        } else {
+                            Screen.NewNoteScreen.route + "/${NOTE_ID}"
+                        }
+                    ) {
                         launchSingleTop = true
                     }
                 },
@@ -66,7 +75,9 @@ fun NavGraph(
 
 
         composable(
-            route = Screen.NewNoteScreen.route + "?id={$NOTE_ID}",
+            route = Screen.NewNoteScreen.route + "/{$NOTE_ID}"
+//            Screen.NewNoteScreen.route + "?id={$NOTE_ID}"
+            ,
             arguments = listOf(
                 navArgument(NOTE_ID) {
                     type = NavType.StringType
@@ -76,7 +87,7 @@ fun NavGraph(
         ) {
             // todo Selected note screen
             entry ->
-            NoteDetailsScreen(noteId = entry.arguments?.getString(NOTE_ID) as String) {
+            NoteDetailsScreen(noteId = entry.arguments?.getString(NOTE_ID) ?: "") {
                 navController.navigateUp()
             }
         }

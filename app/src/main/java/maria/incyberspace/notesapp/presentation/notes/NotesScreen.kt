@@ -54,7 +54,10 @@ fun NotesScreen(
         },
         scaffoldState = scaffoldState,
         floatingActionButton = {
-            AddNote(onClick = navToAddNewNote)
+            // todo remove if doesn't work
+            AddNote(onClick = { onNoteClick.invoke("") }
+//            navToAddNewNote
+            )
         }
     )
 
